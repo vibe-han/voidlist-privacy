@@ -1,8 +1,32 @@
-:root { --bg: #ffffff; --fg: #1a1a1a; --muted: #666666; --link: #b3141c; color-scheme: light dark; }
-@media (prefers-color-scheme: dark) { :root { --bg: #000000; --fg: #ececec; --muted: #9a9a9a; --link: #ff5a60; } }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, sans-serif; }
-main { max-width: 680px; margin: 0 auto; padding: 32px 16px 64px; }
-h1 { line-height: 1.2; }
-h2 { margin-top: 2em; font-size: 1.15em; }
-a { color: var(--link); }
-.date { color: var(--muted); }
+/* Colors and type from voidlist design/HANDOFF.md section 2. Fonts are OFL, licences in fonts/. */
+@font-face { font-family: Doto; src: url(fonts/Doto-800.ttf) format("truetype"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Space Mono"; src: url(fonts/SpaceMono-Regular.ttf) format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Space Mono"; src: url(fonts/SpaceMono-Bold.ttf) format("truetype"); font-weight: 700; font-display: swap; }
+
+:root {
+  --canvas: #000000; --primary: #E5E2E1; --secondary: #C6C6C7; --tertiary: #8A8A8A;
+  --hairline: #1A1A1A; --red: #D71921; --glow: 0 0 8px #D71921;
+  color-scheme: dark light;
+}
+@media (prefers-color-scheme: light) {
+  :root { --canvas: #F4F2F0; --primary: #0E0E0E; --secondary: #252222; --tertiary: #5C5757; --hairline: #E3DFDE; --glow: none; }
+}
+
+body { margin: 0; background: var(--canvas); color: var(--secondary); font: 15px/1.7 "Space Mono", ui-monospace, monospace; }
+main { max-width: 680px; margin: 0 auto; padding: 40px 20px 72px; }
+
+h1, h2 { font-family: Doto, "Space Mono", monospace; font-weight: 800; color: var(--primary); }
+h1 { font-size: 32px; line-height: 1.15; margin: 0 0 8px; }
+h1::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 14px; vertical-align: middle; border-radius: 50%; background: var(--red); box-shadow: var(--glow); }
+h2 { font-size: 15px; line-height: 1.3; letter-spacing: .22em; text-transform: uppercase; margin: 40px 0 12px; padding-top: 24px; border-top: 1px solid var(--hairline); }
+
+strong { color: var(--primary); }
+ul { padding-left: 20px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--red); }
+
+/* Brand red as underline only: as text on black it is about 4:1, under the 4.5:1 body-text minimum. */
+a { color: var(--primary); text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+a:hover, a:focus-visible { color: var(--red); }
+
+.date { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--tertiary); margin: 0 0 32px; }
